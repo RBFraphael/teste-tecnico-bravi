@@ -1,0 +1,463 @@
+{
+	"info": {
+		"_postman_id": "1b534824-ab07-48f5-a7ff-a198acafc266",
+		"name": "Teste Técnico Bravi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29057081"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"access_token\", pm.response.json().access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@bravi.com.br\",\n    // \"name\": \"admin\", // Opcional - Escolher entre \"email\" ou \"name\"\n    \"password\": \"Abcd1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"access_token\", pm.response.json().access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/refresh",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "People",
+			"item": [
+				{
+					"name": "Create Person",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"document\": \"12345678900\", // Padrão CPF (11 dígitos)\n    \"birthdate\": \"1990-01-01\",\n    \"gender\": \"male\",\n\n    \"addresses\": [\n        {\n            \"address\": \"Av. Brigadeiro Faria Lima\",\n            \"complement\": \"18 Andar\", // Opcional\n            \"number\": \"3477\",\n            \"neighborhood\": \"Itaim Bibi\",\n            \"city\": \"São Paulo\",\n            \"state\": \"SP\", // Abreviação estado (2 caracteres)\n            \"country\": \"BR\", // Abreviação país (2 caracteres)\n            \"postal_code\": \"04538133\" // Padrão CEP (8 dígitos)\n        }\n    ],\n\n    \"contacts\": [\n        {\n            \"type\": \"phone\", // Telefone (\"phone\"), Celular (\"cellphone\"), FAX (\"fax\"), WhatsApp (\"whatsapp\") ou E-mail (\"email\")\n            \"contact\": \"+55 (11) 2395-8400\"\n        },\n        {\n            \"type\": \"whatsapp\", // Telefone (\"phone\"), Celular (\"cellphone\"), FAX (\"fax\"), WhatsApp (\"whatsapp\") ou E-mail (\"email\")\n            \"contact\": \"+55 (11) 91234-5678\"\n        },\n        {\n            \"type\": \"email\", // Telefone (\"phone\"), Celular (\"cellphone\"), FAX (\"fax\"), WhatsApp (\"whatsapp\") ou E-mail (\"email\")\n            \"contact\": \"john.doe@google.com.br\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/people",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List People",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/people",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"people"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "John",
+									"disabled": true
+								},
+								{
+									"key": "filter[]",
+									"value": "gender:male",
+									"disabled": true
+								},
+								{
+									"key": "filter[]",
+									"value": "birthdate:1990-01-01",
+									"disabled": true
+								},
+								{
+									"key": "with",
+									"value": "addresses,contacts",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Person",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/people/1?with=addresses,contacts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"people",
+								"1"
+							],
+							"query": [
+								{
+									"key": "with",
+									"value": "addresses,contacts"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Person",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"document\": \"12345678900\", // Padrão CPF (11 dígitos)\n    \"birthdate\": \"1990-01-01\",\n    \"gender\": \"male\",\n\n    \"addresses\": [\n        {\n            \"id\": 1, // Requerido para atualizar/manter endereços existentes\n            \"address\": \"Av. Brigadeiro Faria Lima\",\n            \"complement\": \"18 Andar\", // Opcional\n            \"number\": \"3477\",\n            \"neighborhood\": \"Itaim Bibi\",\n            \"city\": \"São Paulo\",\n            \"state\": \"SP\", // Abreviação estado (2 caracteres)\n            \"country\": \"BR\", // Abreviação país (2 caracteres)\n            \"postal_code\": \"04538133\" // Padrão CEP (8 dígitos)\n        }\n    ],\n\n    \"contacts\": [\n        {\n            \"id\": 1, // Requerido para atualizar/manter contatos existentes\n            \"type\": \"phone\", // Telefone (\"phone\"), Celular (\"cellphone\"), FAX (\"fax\"), WhatsApp (\"whatsapp\") ou E-mail (\"email\")\n            \"contact\": \"+55 (11) 2395-8400\"\n        },\n        {\n            \"id\": 2, // Requerido para atualizar/manter contatos existentes\n            \"type\": \"whatsapp\", // Telefone (\"phone\"), Celular (\"cellphone\"), FAX (\"fax\"), WhatsApp (\"whatsapp\") ou E-mail (\"email\")\n            \"contact\": \"+55 (11) 91234-5678\"\n        },\n        {\n            \"id\": 3, // Requerido para atualizar/manter contatos existentes\n            \"type\": \"email\", // Telefone (\"phone\"), Celular (\"cellphone\"), FAX (\"fax\"), WhatsApp (\"whatsapp\") ou E-mail (\"email\")\n            \"contact\": \"john.doe@google.com.br\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/people/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"people",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Person",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/people/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"people",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"john.doe\",\n    \"email\": \"john.doe@google.com\",\n    \"password\": \"Abcd1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "admin",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"john.doe\",\n    \"email\": \"john.doe@google.com\",\n    \"password\": \"Abcd1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.add({",
+					"  key: \"Accept\",",
+					"  value: \"application/json\"",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
