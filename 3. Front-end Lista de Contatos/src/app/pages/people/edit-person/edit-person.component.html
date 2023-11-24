@@ -1,0 +1,147 @@
+<app-admin-panel>
+    <h1>Editar Pessoa</h1>
+
+    <div class="card shadow border-0">
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="row mb-4">
+                    <div class="col-12 col-lg-6 mb-2">
+                        <div class="form-floating">
+                            <input type="text" formControlName="first_name" id="first_name" class="form-control" placeholder="Nome">
+                            <label for="first_name">Nome</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 mb-2">
+                        <div class="form-floating">
+                            <input type="text" formControlName="last_name" id="last_name" class="form-control" placeholder="Sobrenome">
+                            <label for="last_name">Sobrenome</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 mb-2">
+                        <div class="form-floating">
+                            <input type="text" formControlName="document" id="document" class="form-control" placeholder="Documento">
+                            <label for="document">Documento</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 mb-2">
+                        <div class="form-floating">
+                            <input type="date" formControlName="birthdate" id="birthdate" class="form-control" placeholder="Data de nascimento">
+                            <label for="birthdate">Data de nascimento</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 mb-2">
+                        <div class="form-floating">
+                            <select formControlName="gender" id="gender" class="form-select" placeholder="Gênero">
+                                <option *ngFor="let gender of genders" [value]="gender.value">{{ gender.label }}</option>
+                            </select>
+                            <label for="gender">Gênero</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div formArrayName="addresses" class="mb-4">
+                    <div class="d-flex flex-row justify-content-start gap-3 align-items-center">
+                        <h4>Endereços</h4>
+                        <button type="button" class="btn btn-primary btn-sm" (click)="addAddress()">
+                            <fa-icon [icon]="addIcon" [fixedWidth]="true"></fa-icon> Adic. Endereço
+                        </button>
+                    </div>
+
+                    <div *ngFor="let a of addresses.controls; let i = index" class="row mb-2 border-bottom border-secondary py-3" [formGroupName]="i">
+                        <div class="col-12 col-lg-8 mb-2">
+                            <div class="form-floating">
+                                <input type="text" formControlName="address" id="address_{{ i }}" class="form-control" placeholder="Logradouro">
+                                <label for="address_{{ i }}">Logradouro</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mb-2">
+                            <div class="form-floating">
+                                <input type="text" formControlName="number" id="number_{{ i }}" class="form-control" placeholder="Número">
+                                <label for="number_{{ i }}">Número</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 mb-2">
+                            <div class="form-floating">
+                                <input type="text" formControlName="complement" id="complement_{{ i }}" class="form-control" placeholder="Complemento">
+                                <label for="complement_{{ i }}">Complemento</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 mb-2">
+                            <div class="form-floating">
+                                <input type="text" formControlName="neighborhood" id="neighborhood_{{ i }}" class="form-control" placeholder="Bairro">
+                                <label for="neighborhood_{{ i }}">Bairro</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mb-2">
+                            <div class="form-floating">
+                                <input type="text" formControlName="city" id="city_{{ i }}" class="form-control" placeholder="Cidade">
+                                <label for="city_{{ i }}">Cidade</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mb-2">
+                            <div class="form-floating">
+                                <select formControlName="state" id="state_{{ i }}" class="form-select" placeholder="Estado">
+                                    <option *ngFor="let state of states" [value]="state.value">{{ state.label }}</option>
+                                </select>
+                                <label for="state_{{ i }}">Estado</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mb-2">
+                            <div class="form-floating">
+                                <input type="text" formControlName="postal_code" id="postal_code_{{ i }}" class="form-control" placeholder="CEP">
+                                <label for="postal_code_{{ i }}">CEP</label>
+                            </div>
+                        </div>
+                        <div class="col-12 text-end">
+                            <button type="button" class="btn btn-danger btn-sm" (click)="removeAddress(i)">
+                                <fa-icon [icon]="removeIcon" [fixedWidth]="true"></fa-icon> Remover Endereço
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div formArrayName="contacts" class="mb-4">
+                    <div class="d-flex flex-row justify-content-start gap-3 align-items-center">
+                        <h4>Contatos</h4>
+                        <button type="button" class="btn btn-primary btn-sm" (click)="addContact()">
+                            <fa-icon [icon]="addIcon" [fixedWidth]="true"></fa-icon> Adic. Contato
+                        </button>
+                    </div>
+
+                    <div *ngFor="let c of contacts.controls; let i = index" class="row mb-2 border-bottom border-secondary py-3" [formGroupName]="i">
+                        <div class="col-12 col-lg-4 mb-2">
+                            <div class="form-floating">
+                                <select formControlName="type" id="contact_type_{{ i }}" class="form-select" placeholder="Tipo">
+                                    <option *ngFor="let type of contactTypes" [value]="type.value">{{ type.label }}</option>
+                                </select>
+                                <label for="contact_type_{{ i }}">Tipo</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-8 mb-2">
+                            <div class="form-floating">
+                                <input type="text" formControlName="contact" id="contact_{{ i }}" class="form-control" placeholder="Contato">
+                                <label for="contact_{{ i }}">Contato</label>
+                            </div>
+                        </div>
+                        <div class="col-12 text-end">
+                            <button type="button" class="btn btn-danger btn-sm" (click)="removeContact(i)">
+                                <fa-icon [icon]="removeIcon" [fixedWidth]="true"></fa-icon> Remover Contato
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success" [disabled]="isSubmitting">
+
+                    <span *ngIf="!isSubmitting">
+                        <fa-icon [icon]="saveIcon" [fixedWidth]="true"></fa-icon> Salvar Alterações
+                    </span>
+
+                    <div *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </button>
+            </form>
+        </div>
+    </div>
+</app-admin-panel>

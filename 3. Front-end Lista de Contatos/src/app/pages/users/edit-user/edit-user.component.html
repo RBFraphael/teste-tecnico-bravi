@@ -1,0 +1,41 @@
+<app-admin-panel>
+    <h1>Editar Usuário</h1>
+
+    <div class="card shadow border-0">
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="row mb-4">
+                    <div class="col-12 col-lg-4 mb-2">
+                        <div class="form-floating">
+                            <input type="text" formControlName="name" id="name" class="form-control" placeholder="Nome do usuário">
+                            <label for="name">Nome do usuário</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 mb-2">
+                        <div class="form-floating">
+                            <input type="email" formControlName="email" id="email" class="form-control" placeholder="E-mail">
+                            <label for="email">E-mail</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 mb-2">
+                        <div class="form-floating">
+                            <input type="password" formControlName="password" id="password" class="form-control" placeholder="Senha">
+                            <label for="password">Senha</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success" [disabled]="isSubmitting">
+
+                    <span *ngIf="!isSubmitting">
+                        <fa-icon [icon]="saveIcon" [fixedWidth]="true"></fa-icon> Salvar Alterações
+                    </span>
+
+                    <div *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </button>
+            </form>
+        </div>
+    </div>
+</app-admin-panel>

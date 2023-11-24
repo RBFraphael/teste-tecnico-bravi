@@ -1,0 +1,43 @@
+<div class="admin-panel">
+    <header class="px-2 py-3">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <img src="../../../assets/images/logo-bravi.png" class="img-fluid" />
+                </div>
+                <div class="col-6 d-flex flex-row justify-content-end align-items-center gap-3">
+                    <p class="text-white m-0">Olá, {{ username }}!</p>
+                    <button class="btn btn-outline-white border-0" (click)="logout()">
+                        Sair <fa-icon [icon]="logoutIcon" [fixedWidth]="true"></fa-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content">
+        <aside class="sidenav">
+            <ul class="list-unstyled">
+                <li>
+                    <a [routerLink]="['/dashboard']" class="btn btn-primary w-100 text-start rounded-0">
+                        <fa-icon [icon]="dashboardIcon" [fixedWidth]="true"></fa-icon> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/people']" class="btn btn-primary w-100 text-start rounded-0">
+                        <fa-icon [icon]="peopleIcon" [fixedWidth]="true"></fa-icon> Pessoas
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/users']" class="btn btn-primary w-100 text-start rounded-0">
+                        <fa-icon [icon]="usersIcon" [fixedWidth]="true"></fa-icon> Usuários
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="main-content p-3">
+            <ng-content></ng-content>
+        </main>
+    </div>
+</div>

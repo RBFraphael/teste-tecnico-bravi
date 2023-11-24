@@ -1,0 +1,108 @@
+<app-admin-panel>
+    <h1>Ver Pessoa</h1>
+    
+    <div class="card shadow border-0">
+        <div class="card-body">
+            <h4>Dados Básicos</h4>
+
+            <div class="row mb-4">
+                <div class="col-12 col-lg-6 mb-2">
+                    <p>
+                        <small class="fw-bold">Nome:</small><br>
+                        {{ person.first_name }} {{ person.last_name }}
+                    </p>
+                </div>
+                <div class="col-12 col-lg-6 mb-2">
+                    <p>
+                        <small class="fw-bold">Documento:</small><br>
+                        {{ person.document }}
+                    </p>
+                </div>
+                <div class="col-12 col-lg-6 mb-2">
+                    <p>
+                        <small class="fw-bold">Data de Nascimento:</small><br>
+                        {{ person.birthdate }}
+                    </p>
+                </div>
+                <div class="col-12 col-lg-6 mb-2">
+                    <p>
+                        <small class="fw-bold">Gênero:</small><br>
+                        {{ person.gender }}
+                    </p>
+                </div>
+            </div>
+
+            <h4>Endereços</h4>
+
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div *ngFor="let address of person.addresses" class="row mb-2 border border-secondary">
+                        <div class="col-6 col-lg-3 mb-1">
+                            <p>
+                                <small class="fw-bold">Logradouro:</small><br>
+                                {{ address.address }}
+                            </p>
+                        </div>
+                        <div class="col-6 col-lg-3 mb-1">
+                            <p>
+                                <small class="fw-bold">Número:</small><br>
+                                {{ address.number }}
+                            </p>
+                        </div>
+                        <div class="col-6 col-lg-3 mb-1">
+                            <p>
+                                <small class="fw-bold">Complemento:</small><br>
+                                {{ address.complement }}
+                            </p>
+                        </div>
+                        <div class="col-6 col-lg-3 mb-1">
+                            <p>
+                                <small class="fw-bold">Bairro:</small><br>
+                                {{ address.neighborhood }}
+                            </p>
+                        </div>
+                        <div class="col-6 col-lg-3 mb-1">
+                            <p>
+                                <small class="fw-bold">Cidade:</small><br>
+                                {{ address.city }}
+                            </p>
+                        </div>
+                        <div class="col-6 col-lg-3 mb-1">
+                            <p>
+                                <small class="fw-bold">Estado:</small><br>
+                                {{ address.state }}
+                            </p>
+                        </div>
+                        <div class="col-6 col-lg-3 mb-1">
+                            <p>
+                                <small class="fw-bold">CEP:</small><br>
+                                {{ address.postal_code }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Contatos</h4>
+
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div *ngFor="let contact of person.contacts" class="row mb-2 border border-secondary">
+                        <div class="col-6 col-lg-4 mb-1">
+                            <p>
+                                <small class="fw-bold">Tipo:</small><br>
+                                {{ contact.type }}
+                            </p>
+                        </div>
+                        <div class="col-6 col-lg-8 mb-1">
+                            <p>
+                                <small class="fw-bold">Contato:</small><br>
+                                {{ contact.contact }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-admin-panel>

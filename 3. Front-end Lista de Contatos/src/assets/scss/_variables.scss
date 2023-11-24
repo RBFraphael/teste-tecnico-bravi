@@ -1,0 +1,97 @@
+$blue:    #397EF5;
+$red:     #EB2626;
+$orange:  #FF7C00;
+$yellow:  #ffc107 !default;
+$green:   #84CC26;
+$cyan:    #0dcaf0 !default;
+
+$white:    #fff !default;
+$gray-100: #F5F5F5;
+$gray-300: #E1E5EE;
+$gray-400: #C3CBDE;
+$gray-500: #92969D;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$primary:       $blue !default;
+$secondary:     $gray-400 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-300 !default;
+$lighter:       $gray-100 !default;
+$dark:          $gray-900 !default;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "orange":     $orange,
+  "light":      $light,
+  "lighter":    $lighter,
+  "dark":       $dark,
+  "white":      $white,
+  "black":      $black,
+) !default;
+
+$min-contrast-ratio: 1.75 !default;
+
+$font-size-root: 14px;
+
+$h1-font-size: 3.7142rem;
+$h2-font-size: 3rem;
+$h3-font-size: 2.2857rem;
+$h4-font-size: 1.5745rem;
+$h5-font-size: 1rem;
+$h6-font-size: 0.8572rem;
+
+$body-bg: #F7F8FA;
+$body-color: $black;
+$text-muted: $gray-500;
+
+$box-shadow: 0 0 50px rgba($black, .16);
+
+$btn-padding-x: 1.8571rem;
+// $btn-padding-y: 1.1428rem;
+$btn-padding-y: .5rem;
+
+$input-padding-x: 1.8571rem;
+$input-padding-y: 1.1428rem;
+$input-bg: $white;
+$input-focus-box-shadow: none;
+$input-focus-border-color: $primary;
+
+$border-radius-sm: 0.1rem;
+$border-radius: 0.2142rem;
+$border-radius-lg: 0.7rem;
+$border-radius-xl: 1.1rem;
+$border-radius-2xl: 1.4285rem;
+
+$font-weight-thin: 100;
+$font-weight-lighter: 200;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-normal: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-bolder: 800;
+$font-weight-black: 900;
+
+$font-weight-base: $font-weight-regular;
+
+$font-family-montserrat: 'Montserrat', sans-serif;
+$font-family-source-sans-pro: 'Source Sans Pro', sans-serif;
+
+$font-family-sans-serif: $font-family-source-sans-pro;
+
+$headings-font-family: $font-family-montserrat;
+$headings-font-weight: $font-weight-normal;
+
+$btn-font-weight: $font-weight-semibold;
+
+$link-color: $primary;
+$link-decoration: none;

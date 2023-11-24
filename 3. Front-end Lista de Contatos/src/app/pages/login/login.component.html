@@ -1,0 +1,48 @@
+<main class="bg-dark">
+    <div class="container">
+        <div class="row vh-100 align-items-center justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
+                <div class="text-center mb-4">
+                    <img src="../../../assets/images/logo-bravi.png" alt="Logo Bravi" class="img-fluid">
+                </div>
+
+                <div class="card shadow border-0 mb-4">
+                    <div class="card-body p-5">
+                        <h1 class="h3 text-center mb-3">Login</h1>
+
+                        <form [formGroup]="form" (ngSubmit)="submit()">
+                            <div class="form-floating mb-2">
+                                <input type="email" formControlName="email" id="email" class="form-control" placeholder="E-mail">
+                                <label for="email">E-mail</label>
+
+                                <small class="text-danger" *ngIf="form.get('email')?.hasError('required')">O e-mail é obrigatório</small>
+                                <small class="text-danger" *ngIf="form.get('email')?.hasError('email')">O e-mail informado não é válido</small>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="password" formControlName="password" id="password" class="form-control" placeholder="Senha">
+                                <label for="password">Senha</label>
+                                
+                                <small class="text-danger" *ngIf="form.get('password')?.hasError('required')">A senha é obrigatória</small>
+                            </div>
+
+                            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center gap-2">
+                                <div class="text-center text-lg-start">
+                                    <button type="submit" class="btn btn-primary" [disabled]="isLoggingIn">
+                                        <span *ngIf="!isLoggingIn">Entrar</span>
+
+                                        <div *ngIf="isLoggingIn" class="spinner-border spinner-border-sm" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <p class="text-light text-center small">Gestão de Pessoas</p>
+            </div>
+        </div>
+    </div>
+</main>
